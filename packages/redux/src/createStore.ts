@@ -1,7 +1,12 @@
 
 const initType = Symbol(+new Date())
 
-export default function createStore(reducer: any) {
+export default function createStore(reducer: any, enhancer: any) {
+
+	// 如果有中间件的话就返回中间件返回的结果
+	if (enhancer) {
+		return enhancer(createStore)(reducer)
+	}
 
 	let currentState: any
 	let listeners: Function[] = []

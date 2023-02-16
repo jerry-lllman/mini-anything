@@ -20,10 +20,20 @@ export default function ReduxPage() {
 		console.log(store.getState())
 	}
 
+	const minus = () => {
+		store.dispatch((dispatch: any) => {
+			setTimeout(() => {
+				dispatch({ type: 'MINUS' })
+			}, 1000)
+		})
+	}
+
+
 	return (
 		<div>
 			<p>{count}</p>
 			<button onClick={add}>+1</button>
+			<button onClick={minus}>-1</button>
 		</div>
 	)
 }
