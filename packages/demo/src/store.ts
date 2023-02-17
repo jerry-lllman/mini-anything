@@ -1,8 +1,9 @@
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
+// import thunk from 'redux-thunk'
+// import logger from 'redux-logger'
 
 import { createStore, applyMiddleware } from "@mini/redux";
-
+import logger from '@mini/redux-logger'
+import thunk from '@mini/redux-thunk'
 
 function countReducer(state = 0, action: any) {
 	switch (action.type) {

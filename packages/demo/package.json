@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@mini/redux": "workspace:^1.0.0",
+    "@mini/redux-logger": "workspace:^1.0.0",
+    "@mini/redux-thunk": "workspace:^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "redux-logger": "^3.0.6",
