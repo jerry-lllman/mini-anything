@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from "react"
-import store from "../../store"
+import multipleStore from "../../store/multipleStore"
+import store from "../../store/store"
 
 export default function ReduxPage() {
 
@@ -9,9 +10,11 @@ export default function ReduxPage() {
 
 	useEffect(() => {
 		const unsubscribe = store.subscribe(forceUpdate)
+		const multipleStoreUnsubscribe = multipleStore.subscribe(forceUpdate)
 
 		return () => {
 			unsubscribe()
+			multipleStoreUnsubscribe()
 		}
 	}, [])
 
@@ -34,6 +37,25 @@ export default function ReduxPage() {
 			<p>{count}</p>
 			<button onClick={add}>+1</button>
 			<button onClick={minus}>-1</button>
+			<hr />
+			<div>----------multipleStore--------</div>
+			<div>{multipleStore.getState().count}</div>
+			<button onClick={() => {
+				multipleStore.dispatch({ type: 'ADD' })
+			}}>+1</button>
+			<button onClick={() => {
+				multipleStore.dispatch({ type: 'MINUS' })
+			}}>-1</button>
+			<div>name: {multipleStore.getState().user.name}</div>
+			<input
+				value={multipleStore.getState().user.name}
+				onChange={e => multipleStore.dispatch({ type: 'NAME', payload: { name: e.target.value } })}
+			/>
+			<div>age: {multipleStore.getState().user.age}</div>
+			<input
+				value={multipleStore.getState().user.age}
+				onChange={e => multipleStore.dispatch({ type: 'AGE', payload: { age: Number(e.target.value) } })}
+			/>
 		</div>
 	)
 }
