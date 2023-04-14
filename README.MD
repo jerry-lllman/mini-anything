@@ -10,3 +10,6 @@
 其他 API
  * ✅ 支持中间件  applyMiddleware
  * ✅ 支持多 store  combineReducers
+
+## Inquirer
+命令行交互功能
